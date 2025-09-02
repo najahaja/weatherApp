@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="app-header" role="banner">
+      <div class="brand" aria-label="Weather App brand">
+        <span class="logo" aria-hidden="true">☁️</span>
+        <h1 class="title">Weather</h1>
+      </div>
+
+      <form
+        id="search-form"
+        role="search"
+        aria-label="Search city or coordinates"
+      >
+        <label class="visually-hidden" for="search-input"
+          >Search location</label
+        >
+        <input
+          id="search-input"
+          name="q"
+          type="text"
+          placeholder="Search city (e.g., Lahore) or 31.55,74.34"
+          autocomplete="off"
+        />
+        <button id="search-btn" type="submit" aria-label="Search">
+          Search
+        </button>
+        <button
+          id="use-gps-btn"
+          type="button"
+          aria-label="Use current location"
+        >
+          Use GPS
+        </button>
+      </form>
+
+      <div class="toolbar" aria-label="Preferences">
+        <fieldset
+          class="unit-toggle"
+          id="unit-toggle"
+          role="radiogroup"
+          aria-label="Units"
+        >
+          <input type="radio" id="unit-c" name="units" value="metric" checked />
+          <label for="unit-c">°C</label>
+          <input type="radio" id="unit-f" name="units" value="imperial" />
+          <label for="unit-f">°F</label>
+        </fieldset>
+      </div>
+    </header>
+
+    <main id="app-main" role="main">
+      <section id="status" aria-live="polite" aria-atomic="true">
+        <!-- Loading / error messages will appear here. -->
+      </section>
+
+      <section id="current" aria-labelledby="current-heading">
+        <h2 id="current-heading">Current Weather</h2>
+        <div class="current-wrap">
+          <div class="current-location">
+            <p id="location-name" class="city" aria-live="polite">—</p>
+            <p id="location-meta" class="meta">—</p>
+          </div>
+          <div class="current-core">
+            <p id="current-temp" class="temp" aria-live="polite">—</p>
+            <div class="condition">
+              <img id="current-icon" alt="" />
+              <span id="current-desc">—</span>
+            </div>
+          </div>
+          <dl class="current-extras">
+            <div>
+              <dt>Feels like</dt>
+              <dd id="feels-like">—</dd>
+            </div>
+            <div>
+              <dt>Humidity</dt>
+              <dd id="humidity">—</dd>
+            </div>
+            <div>
+              <dt>Wind</dt>
+              <dd id="wind">—</dd>
+            </div>
+            <div>
+              <dt>Pressure</dt>
+              <dd id="pressure">—</dd>
+            </div>
+            <div>
+              <dt>UV Index</dt>
+              <dd id="uv">—</dd>
+            </div>
+            <div>
+              <dt>Visibility</dt>
+              <dd id="visibility">—</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section id="hourly" aria-labelledby="hourly-heading">
+        <h2 id="hourly-heading">Next 24 Hours</h2>
+        <div id="hourly-list" class="scroller" role="list">
+          <!-- Hourly forecast cards (role=listitem) will be injected here. -->
+        </div>
+      </section>
+
+      <section id="daily" aria-labelledby="daily-heading">
+        <h2 id="daily-heading">7‑Day Forecast</h2>
+        <div id="daily-grid" role="list">
+          <!-- Daily forecast items will be injected here. -->
+        </div>
+      </section>
+
+      <section id="favorites" aria-labelledby="favorites-heading">
+        <div class="favorites-head">
+          <h2 id="favorites-heading">Saved Locations</h2>
+          <button
+            id="add-favorite-btn"
+            type="button"
+            aria-label="Save current location"
+          >
+            Save
+          </button>
+        </div>
+        <ul id="favorite-list" aria-live="polite">
+          <!-- Favorite locations appear here as <li><button class="favorite-item" data-place="...">...</button></li> -->
+        </ul>
+      </section>
+    </main>
+
+    <footer id="app-footer" role="contentinfo">
+      <small>
+        Data source:
+        <a id="data-source-link" href="#" rel="noopener" target="_blank"
+          >(to be set by JS)</a
+        >
+      </small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
